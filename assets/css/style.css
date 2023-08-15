@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: purple;
+}
+
+main {
+    height: 100vh;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Nav Styling */
+
+ul {
+    max-width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+
+/* Link Styling */
+
+a {
+    color: whitesmoke;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    color: slateblue;
+}
