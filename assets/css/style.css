@@ -22,10 +22,16 @@ a {
 
 /* Nav Styling */
 
+nav {
+    height: 75px;
+}
+
 ul {
+    height: 100%;
     max-width: 600px;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     margin: 0 auto;
 }
 
@@ -39,4 +45,20 @@ a {
 a:hover,
 a:focus {
     color: slateblue;
+}
+
+/* Main Styling */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Quiz Styling */
+
+#welcome,
+#quiz-display {
+    display: none;
 }

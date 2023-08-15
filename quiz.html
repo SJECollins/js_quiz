@@ -26,7 +26,7 @@
     </header>
     <main>
       <h1>Quiz Heading</h1>
-      <div>
+      <div id="username-input">
         <h2>What's your name?</h2>
         <input
           type="text"
@@ -36,14 +36,14 @@
         />
         <button id="username-button">Enter</button>
       </div>
-      <div>
+      <div id="welcome">
+        <h2>Welcome <span id="greeting"></span></h2>
+        <p>Ready to start?</p>
+        <button id="start-quiz">Start</button>
+      </div>
+      <div id="quiz-display">
         <h3 id="question"></h3>
-        <div>
-          <button class="answer"></button>
-          <button class="answer"></button>
-          <button class="answer"></button>
-          <button class="answer"></button>
-        </div>
+        <div id="answers"></div>
         <div>
           <p>Time: <span id="time"></span></p>
           <p>Score: <span id="score"></span>/10</p>
@@ -51,6 +51,7 @@
       </div>
     </main>
     <footer>&copy; 1984</footer>
+    <script src="assets/js/questions.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
