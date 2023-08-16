@@ -67,4 +67,7 @@ main {
 
 #score-list {
     list-style-type: decimal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -7,10 +7,7 @@
 window.onload = () => {
     const items = { ...localStorage };
     console.log(items);
-    console.log(items.length);
     let scoreArray = Object.entries(items);
-    console.log(scoreArray);
-    console.log(scoreArray.length);
     sortScores(scoreArray);
 };
 
@@ -19,27 +16,44 @@ function sortScores(scoreArray) {
     for (const entry of scoreArray) {
         let username = entry[0];
         let [score, time] = entry[1].split("_");
-        let newEntry = [username, score, time]
-        console.log(username, score, time);
+        let newEntry = [username, score, time];
+        console.log("Entry: ", entry);
         if (highScores.length >= 1) {
+            let addEnd = true;
             for (let existing of highScores) {
-                if (parseInt(score) > parseInt(existing[1])) {
-                    console.log(score, existing[1])
-                    highScores.splice(highScores.indexOf(existing), 0, newEntry)
-                } else if (parseInt(score) == parseInt(existing[1]) && parseInt(time) > parseInt(existing[2])) {
-                    console.log(time, existing[2])
-                    highScores.splice(highScores.indexOf(existing), 0, newEntry)
-                } else {
-                    highScores.push(newEntry)
+                console.log("Existing: ", existing);
+                if (score > existing[1]) {
+                    console.log("Compare score: ", score, existing[1]);
+                    console.log("Index: ", highScores.indexOf(existing));
+                    highScores.splice(highScores.indexOf(existing), 0, newEntry);
+                    addEnd = false;
+                    console.log("Add above: ", newEntry);
+                    break;
+                } else if (score == existing[1] && time < existing[2]) {
+                    console.log("Compare time: ", time, existing[2]);
+                    highScores.splice(highScores.indexOf(existing), 0, newEntry);
+                    addEnd = false;
+                    console.log("Add above: ", newEntry);
+                    break;
                 }
-            }            
+            }
+            if (addEnd) {
+                console.log("Add end: ", newEntry);
+                highScores.push(newEntry);
+            }
         } else {
-            highScores.push(newEntry)
+            highScores.push(newEntry);
+            console.log("Add first: ", newEntry);
         }
     }
-    printScores(highScores)
+    console.log(highScores);
+    printScores(highScores);
 }
 
 function printScores(highScores) {
-    
+    for (let i = 0; i < 10; i++) {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = `User: ${highScores[i][0]} | Score: ${highScores[i][1]} | Time: ${highScores[i][2]}s`;
+        document.getElementById("score-list").appendChild(listItem);
+    }
 }
