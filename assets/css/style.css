@@ -62,3 +62,9 @@ main {
 #quiz-display {
     display: none;
 }
+
+/* Score Styling */
+
+#score-list {
+    list-style-type: decimal;
+}
