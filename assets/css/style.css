@@ -59,7 +59,8 @@ main {
 /* Quiz Styling */
 
 #welcome,
-#quiz-display {
+#quiz-display,
+#end-display {
     display: none;
 }
 

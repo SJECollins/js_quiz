@@ -1,59 +1,63 @@
-/**
- * How to arrange scores?
- * number right x time? Lower is best?
- * Or arrange by score, then time?
- */
-
+// Get our scores from localStorage
 window.onload = () => {
-    const items = { ...localStorage };
-    console.log(items);
-    let scoreArray = Object.entries(items);
+    // Use Object.entries to iterate through and create array from key-value pairs
+    let scoreArray = Object.entries(localStorage);
     sortScores(scoreArray);
+    // Also attach the eventlistener for the clear scores button
+    document.getElementById("clear-scores").addEventListener("click", clearScores);
 };
 
+// Sort the scores
 function sortScores(scoreArray) {
+    // Empty high score array
     let highScores = [];
     for (const entry of scoreArray) {
+        // Create newEntry for highScores array from entry in scoreArray
         let username = entry[0];
         let [score, time] = entry[1].split("_");
         let newEntry = [username, score, time];
-        console.log("Entry: ", entry);
         if (highScores.length >= 1) {
             let addEnd = true;
+            // Check newEntry against existing entries in highScores to find place
             for (let existing of highScores) {
-                console.log("Existing: ", existing);
                 if (score > existing[1]) {
-                    console.log("Compare score: ", score, existing[1]);
-                    console.log("Index: ", highScores.indexOf(existing));
                     highScores.splice(highScores.indexOf(existing), 0, newEntry);
                     addEnd = false;
-                    console.log("Add above: ", newEntry);
                     break;
                 } else if (score == existing[1] && time < existing[2]) {
-                    console.log("Compare time: ", time, existing[2]);
                     highScores.splice(highScores.indexOf(existing), 0, newEntry);
                     addEnd = false;
-                    console.log("Add above: ", newEntry);
                     break;
                 }
             }
             if (addEnd) {
-                console.log("Add end: ", newEntry);
                 highScores.push(newEntry);
             }
         } else {
             highScores.push(newEntry);
-            console.log("Add first: ", newEntry);
         }
     }
-    console.log(highScores);
     printScores(highScores);
 }
 
+// Append our sorted highScores to our page
 function printScores(highScores) {
-    for (let i = 0; i < 10; i++) {
+    // If length of highScore is greater than 10, slice it
+    if (highScores.length >= 10) {
+        highScores = highScores.slice(0, 10);
+    }
+    // Iterate through length of highScores and append to page
+    for (let i = 0; i < highScores.length; i++) {
         let listItem = document.createElement("li");
         listItem.innerHTML = `User: ${highScores[i][0]} | Score: ${highScores[i][1]} | Time: ${highScores[i][2]}s`;
         document.getElementById("score-list").appendChild(listItem);
     }
+}
+
+// Clear our high scores
+function clearScores() {
+    // Clear local storage
+    localStorage.clear();
+    // Reload the page
+    location.reload();
 }
