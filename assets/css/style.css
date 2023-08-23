@@ -58,7 +58,7 @@ main {
 
 /* Quiz Styling */
 
-#welcome,
+#username-input,
 #quiz-display,
 #end-display {
     display: none;

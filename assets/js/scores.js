@@ -37,15 +37,15 @@ function sortScores(scoreArray) {
             highScores.push(newEntry);
         }
     }
+    // If length of highScore is greater than 10, slice it
+    if (highScores.length >= 10) {
+        highScores = highScores.slice(0, 10);
+    }
     printScores(highScores);
 }
 
 // Append our sorted highScores to our page
 function printScores(highScores) {
-    // If length of highScore is greater than 10, slice it
-    if (highScores.length >= 10) {
-        highScores = highScores.slice(0, 10);
-    }
     // Iterate through length of highScores and append to page
     for (let i = 0; i < highScores.length; i++) {
         let listItem = document.createElement("li");

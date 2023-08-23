@@ -10,6 +10,7 @@ let gameVars = {
     correctAns: "",
     ansArray: [],
     gameOver: false,
+    existingNames: [],
 };
 
 
@@ -73,49 +74,48 @@ function timer() {
     }, 1000);
 }
 
-function getUsername() {
-    // Display username
-    gameVars.username = document.getElementById("username").value;
-    document.getElementById("username-input").style.display = "none";
-    document.getElementById("greeting").innerHTML = gameVars.username;
-    document.getElementById("welcome").style.display = "block";
-    // Add event listener to start game
-    startBtn.addEventListener("click", startGame);
-}
-
 function endGame() {
     // Set gameOver variable to true to stop timer
     gameVars.gameOver = true;
-    // Set localStorage key-value pair with user's game details
-    localStorage.setItem(gameVars.username, `${gameVars.score}_${gameVars.time}`);
     document.getElementById("quiz-display").style.display = "none";
     document.getElementById("end-display").style.display = "block";
     document.getElementById("end-score").innerHTML = gameVars.score;
     document.getElementById("end-time").innerHTML = gameVars.time;
+    document.getElementById("save-score").addEventListener("click", displayNameInput);
     document.getElementById("restart").addEventListener("click", restartGame);
 }
 
+function displayNameInput() {
+    usernameBtn.addEventListener("click", takeName);
+    document.getElementById("username-input").style.display = "block";
+}
+
+function takeName() {
+    gameVars.username = document.getElementById("username").value;
+
+    if (gameVars.username in localStorage) {
+        document.getElementById("warning").innerHTML = `The username ${gameVars.username} already exists!`;
+    } else {
+        saveScore();
+    }
+}
+
 function saveScore() {
-
-
+    document.getElementById("username-input").style.display = "none";
+    document.getElementById("save-score").style.display = "none";
+    document.getElementById("saved").style.display = "block";
     localStorage.setItem(gameVars.username, `${gameVars.score}_${gameVars.time}`);
-
 }
 
 function restartGame() {
-    document.getElementById("end-display").style.display = "none";
-    gameVars.time = 0;
-    gameVars.score = 0;
-    gameVars.questionNum = 0;
-    gameVars.gameOver = false;
-    startGame();
+    location.reload();
 }
 
 function startGame() {
-    // Hide welcome and show quiz display
-    document.getElementById("welcome").style.display = "none";
+    // Show quiz display
     document.getElementById("quiz-display").style.display = "block";
-
+    document.getElementById("welcome").style.display = "none";
+    console.log("Game started");
     // Call first question
     getQuestion();
     // Start timer
@@ -124,5 +124,5 @@ function startGame() {
 
 window.onload = () => {
     // Attach username event listener on window load
-    usernameBtn.addEventListener("click", getUsername);
+    startBtn.addEventListener("click", startGame);
 };

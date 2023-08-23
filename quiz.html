@@ -27,18 +27,18 @@
     <main>
       <h1>Quiz Heading</h1>
       <div id="username-input">
-        <h2>What's your name?</h2>
+        <h2>Enter your name:</h2>
         <input
           type="text"
           name="username"
           id="username"
           placeholder="Enter name"
         />
+        <p id="warning"></p>
         <button id="username-button">Enter</button>
       </div>
       <div id="welcome">
-        <h2>Welcome <span id="greeting"></span></h2>
-        <p>Ready to start?</p>
+        <h2>Ready To Start?</h2>
         <button id="start-quiz">Start</button>
       </div>
       <div id="quiz-display">
@@ -52,9 +52,10 @@
       <div id="end-display">
         <h3>Game Over!</h3>
         <div>
-            <p>Your score: <span id="end-score"></span></p>
-            <p>Your time: <span id="end-time"></span></p>
+          <p>Your score: <span id="end-score"></span></p>
+          <p>Your time: <span id="end-time"></span></p>
         </div>
+        <p id="saved">Score saved!</p>
         <button id="save-score">Save Score?</button>
         <button id="restart">Try Again?</button>
       </div>
