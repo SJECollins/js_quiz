@@ -26,6 +26,7 @@ a {
 nav {
     height: 75px;
     background-color: #512B81;
+    font-size: 1.25rem;
 }
 
 ul {
@@ -35,6 +36,10 @@ ul {
     justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
+}
+
+li a {
+    color: #8CABFF;
 }
 
 /* Link Styling */
@@ -49,6 +54,29 @@ a:focus {
     color: slateblue;
 }
 
+/* Button Styling */
+
+.btn {
+    display: block;
+    min-width: 100px;
+    padding: 0.5rem 1rem;
+    margin: 1rem auto;
+    text-align: center;
+    color: #35155D;
+    background-color: #8CABFF;
+    border: 2px solid #4477CE;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px 2px #35155D;
+    transition: all 0.4s linear;
+}
+
+.btn:hover,
+.btn:active {
+    color: #512B81;
+    background-color: #4477CE;
+    border: 2px solid #8CABFF;
+}
+
 /* Main Styling */
 
 main {
@@ -57,14 +85,45 @@ main {
     align-items: center;
     justify-content: space-evenly;
     height: calc(100vh - 150px);
+    color: #8CABFF;
+}
+
+main h1 {
+    margin-top: 2rem;
+    flex-grow: 1;
+}
+
+main div h2,
+main div h3 {
+    padding: 1rem 0;
+}
+
+main div {
+    flex-grow: 2;
+    width: min(600px, 80vw);
+    background-color: #512B81;
+    border-radius: 4px;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
 }
 
 /* Quiz Styling */
 
 #username-input,
 #quiz-display,
-#end-display {
+#end-display,
+#saved {
     display: none;
+}
+
+input {
+    border: 2px solid #4477CE;
+    border-radius: 4px;
+    padding: 4px;
 }
 
 /* Score Styling */
@@ -81,4 +140,5 @@ footer {
     background-color: #512B81;
     text-align: center;
     line-height: 75px;
+    color: #4477CE;
 }

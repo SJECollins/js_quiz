@@ -2,7 +2,7 @@ const usernameBtn = document.getElementById("username-button");
 const startBtn = document.getElementById("start-quiz");
 
 let gameVars = {
-    username: "Anonymous",
+    username: "",
     time: 0,
     questionNum: 0,
     score: 0,
@@ -33,6 +33,7 @@ function getQuestion() {
             // Save the correct answer text to game variables
             gameVars.correctAns = ansBtn.innerHTML;
         }
+        ansBtn.classList.add("btn");
         // Add event listeners for checkAnswer function
         ansBtn.addEventListener("click", checkAnswer);
         // Append buttons to page
@@ -92,9 +93,10 @@ function displayNameInput() {
 
 function takeName() {
     gameVars.username = document.getElementById("username").value;
-
     if (gameVars.username in localStorage) {
         document.getElementById("warning").innerHTML = `The username ${gameVars.username} already exists!`;
+    } else if (gameVars.username == "" || gameVars.username == null) {
+        document.getElementById("warning").innerHTML = "Enter a username!";
     } else {
         saveScore();
     }
@@ -115,7 +117,6 @@ function startGame() {
     // Show quiz display
     document.getElementById("quiz-display").style.display = "block";
     document.getElementById("welcome").style.display = "none";
-    console.log("Game started");
     // Call first question
     getQuestion();
     // Start timer
