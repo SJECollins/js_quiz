@@ -4,12 +4,13 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: purple;
+html {
+    height: 100%;
 }
 
-main {
-    height: 100vh;
+body {
+    height: 100%;
+    background-color: #35155D;
 }
 
 li {
@@ -24,6 +25,7 @@ a {
 
 nav {
     height: 75px;
+    background-color: #512B81;
 }
 
 ul {
@@ -54,6 +56,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    height: calc(100vh - 150px);
 }
 
 /* Quiz Styling */
@@ -71,4 +74,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #512B81;
+    text-align: center;
+    line-height: 75px;
 }
