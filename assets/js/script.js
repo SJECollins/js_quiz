@@ -106,6 +106,7 @@ function saveScore() {
     document.getElementById("username-input").style.display = "none";
     document.getElementById("save-score").style.display = "none";
     document.getElementById("saved").style.display = "block";
+    document.getElementById("view-scores").style.display = "block";
     localStorage.setItem(gameVars.username, `${gameVars.score}_${gameVars.time}`);
 }
 

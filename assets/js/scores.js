@@ -49,7 +49,7 @@ function printScores(highScores) {
     // Iterate through length of highScores and append to page
     for (let i = 0; i < highScores.length; i++) {
         let listItem = document.createElement("li");
-        listItem.innerHTML = `User: ${highScores[i][0]} | Score: ${highScores[i][1]} | Time: ${highScores[i][2]}s`;
+        listItem.innerHTML = `${[i + 1]}: User: ${highScores[i][0]} | Score: ${highScores[i][1]} | Time: ${highScores[i][2]}s`;
         document.getElementById("score-list").appendChild(listItem);
     }
 }
