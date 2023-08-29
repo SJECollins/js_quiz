@@ -1,5 +1,6 @@
 const usernameBtn = document.getElementById("username-button");
 const startBtn = document.getElementById("start-quiz");
+const restartBtn = document.getElementById("restart");
 
 let gameVars = {
     username: "",
@@ -39,6 +40,9 @@ function getQuestion() {
         // Append buttons to page
         document.getElementById("answers").appendChild(ansBtn);
     }
+
+    // Add event listener for restart button
+    restartBtn.addEventListener("click", restartGame);
 }
 
 function checkAnswer(event) {
@@ -86,7 +90,7 @@ function endGame() {
     document.getElementById("end-score").innerHTML = gameVars.score;
     document.getElementById("end-time").innerHTML = gameVars.time;
     document.getElementById("save-score").addEventListener("click", displayNameInput);
-    document.getElementById("restart").addEventListener("click", restartGame);
+    document.getElementById("reset").addEventListener("click", restartGame);
 }
 
 function displayNameInput() {
