@@ -54,9 +54,12 @@ function checkAnswer(event) {
     // Increment question number
     gameVars.questionNum++;
 
+    // Slight delay to display correct answer
+    // Check wether to display a new question or end the game
+    console.log(questionArray.length);
     setTimeout(() => {
         document.getElementById("answers").innerHTML = "";
-        if (gameVars.questionNum < 3) {
+        if (gameVars.questionNum < questionArray.length) {
             getQuestion();
         } else {
             endGame();
@@ -87,11 +90,13 @@ function endGame() {
 }
 
 function displayNameInput() {
+    // Display the username input and add event listener
     usernameBtn.addEventListener("click", takeName);
     document.getElementById("username-input").style.display = "block";
 }
 
 function takeName() {
+    // Check if username is already taken, save if free
     gameVars.username = document.getElementById("username").value;
     if (gameVars.username in localStorage) {
         document.getElementById("warning").innerHTML = `The username ${gameVars.username} already exists!`;
@@ -103,14 +108,18 @@ function takeName() {
 }
 
 function saveScore() {
+    // Hide username input and save score button
     document.getElementById("username-input").style.display = "none";
     document.getElementById("save-score").style.display = "none";
+    // Show message that score saved and button to view high scores
     document.getElementById("saved").style.display = "block";
     document.getElementById("view-scores").style.display = "block";
+    // Save the score!
     localStorage.setItem(gameVars.username, `${gameVars.score}_${gameVars.time}`);
 }
 
 function restartGame() {
+    // Reset the page - bit brutish
     location.reload();
 }
 

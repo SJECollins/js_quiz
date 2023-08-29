@@ -1,3 +1,5 @@
+// Test question array
+// Could have hardcoded questions or use api??
 const questionArray = [
     {
         que: "This is the first question",
